@@ -4,15 +4,15 @@ import 'package:carys/core/presentation/pages/tab_overlay_page.dart';
 import 'package:carys/core/presentation/theme/app_theme_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+
+import 'features/onboarding/presentation/pages/onboarding_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    FlutterNativeSplash.remove();
     return MultiBlocProvider(
       providers: [
         BlocProvider<ThemeModeBloc>(
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
           // ),
           theme: AppThemeData.lightTheme,
           darkTheme: AppThemeData.darkTheme,
-          home: TabOverlayPage(),
+          home: const OnboardingPage(),
         );
       }),
     );

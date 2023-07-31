@@ -1,4 +1,5 @@
 import 'package:carys/core/domain/entities/navbar_icon.dart';
+import 'package:carys/core/presentation/widgets/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -22,7 +23,7 @@ class CustomNavBarWidget extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border(
           top: BorderSide(
-            color: Theme.of(context).colorScheme.onBackground.withOpacity(0.06),
+            color: AppColors.black.withOpacity(0.06),
           ),
         ),
       ),
@@ -35,7 +36,7 @@ class CustomNavBarWidget extends StatelessWidget {
             int index = items.indexOf(item);
             return Flexible(
               child: Material(
-                color: Theme.of(context).colorScheme.background,
+                color: AppColors.white,
                 child: InkResponse(
                   onTap: () => onItemSelected(index),
                   child:
@@ -71,16 +72,14 @@ class BuildItem extends StatelessWidget {
           width: 4.h,
           height: 4.h,
           decoration: BoxDecoration(
-            color: isSelected ? Theme.of(context).primaryColor : null,
+            color: isSelected ? AppColors.purple : null,
             borderRadius: BorderRadius.circular(2.w),
           ),
           alignment: Alignment.center,
           child: SvgPicture.asset(
             "assets/svg/${item.icon}.svg",
             colorFilter: ColorFilter.mode(
-              isSelected
-                  ? Theme.of(context).colorScheme.background
-                  : Theme.of(context).colorScheme.onSurface,
+              isSelected ? AppColors.white : AppColors.darkGray,
               BlendMode.srcIn,
             ),
           ),
@@ -93,9 +92,7 @@ class BuildItem extends StatelessWidget {
                 child: Text(
               item.title,
               style: TextStyle(
-                color: isSelected
-                    ? Theme.of(context).colorScheme.onBackground
-                    : Theme.of(context).colorScheme.onSurface,
+                color: isSelected ? AppColors.black : AppColors.darkGray,
                 fontWeight: isSelected ? FontWeight.w500 : FontWeight.w400,
                 fontSize: 15.sp,
               ),
