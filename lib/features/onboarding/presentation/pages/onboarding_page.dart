@@ -1,7 +1,7 @@
-import 'package:carys/core/presentation/pages/tab_overlay_page.dart';
 import 'package:carys/core/presentation/widgets/app_buttons.dart';
 import 'package:carys/core/presentation/widgets/app_colors.dart';
 import 'package:carys/core/presentation/widgets/app_textstyle.dart';
+import 'package:carys/features/auth/presentation/pages/get_started_page.dart';
 import 'package:carys/features/onboarding/presentation/widgets/onboarding_widget1.dart';
 import 'package:carys/features/onboarding/presentation/widgets/onboarding_widget2.dart';
 import 'package:flutter/material.dart';
@@ -120,8 +120,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
   void next() {
     if (pageIndex.value == onboardingScreens.length - 1) {
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => TabOverlayPage()));
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => const GetStartedPage()));
     } else {
       controller.animateToPage(pageIndex.value + 1,
           duration: const Duration(milliseconds: 500), curve: Curves.easeIn);

@@ -4,7 +4,9 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 class AppTextfields {
   static TextFormField labelField(
-          {TextEditingController? controller, FormFieldValidator? validator}) =>
+          {required String label,
+          TextEditingController? controller,
+          FormFieldValidator? validator}) =>
       TextFormField(
         controller: controller,
         validator: validator,
@@ -15,7 +17,7 @@ class AppTextfields {
         ),
         decoration: InputDecoration(
             contentPadding: EdgeInsets.only(left: 2.w),
-            labelText: "  Hello  ",
+            labelText: "  $label  ",
             labelStyle: TextStyle(
                 fontSize: 18.sp,
                 fontWeight: FontWeight.w500,

@@ -1,6 +1,5 @@
 import 'package:carys/core/presentation/blocs/tab_overlay/tab_overlay_bloc.dart';
 import 'package:carys/core/presentation/blocs/theme_mode/theme_mode_bloc.dart';
-import 'package:carys/core/presentation/pages/tab_overlay_page.dart';
 import 'package:carys/core/presentation/theme/app_theme_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
