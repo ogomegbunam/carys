@@ -34,17 +34,18 @@ class TabOverlayPage extends StatelessWidget {
       builder: (context, state) {
         return PersistentTabView.custom(
           context,
-          controller: controller,
+          controller: state.tabController,
           itemCount: _navBarItems.length,
           screens: _buildScreens(),
           confineInSafeArea: true,
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           handleAndroidBackButtonPress: true,
-          hideNavigationBar: !state.showTabBar,
+          hideNavigationBar: state is TabOverlayHidden,
           customWidget: (navBarEssentials) => CustomNavBarWidget(
             items: _navBarItems,
-            selectedIndex: state.tabIndex,
+            selectedIndex: state.tabController.index,
             onItemSelected: (index) {
+              controller.index = index;
               context.read<TabOverlayBloc>().add(ChangeTabIndexEvent(index));
             },
           ),

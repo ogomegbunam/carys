@@ -1,3 +1,4 @@
+import 'package:carys/core/presentation/widgets/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -7,6 +8,12 @@ class AppButtons {
           required Function onPressed,
           bool enabled = true}) =>
       _PrimayButton(text: text, onPressed: onPressed, enabled: enabled);
+
+  static Widget smallPrimary(
+          {required String text,
+          required Function onPressed,
+          bool enabled = true}) =>
+      _SmallPrimary(text: text, onPressed: onPressed, enabled: enabled);
 }
 
 class _PrimayButton extends StatelessWidget {
@@ -32,7 +39,7 @@ class _PrimayButton extends StatelessWidget {
         width: double.maxFinite,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: Theme.of(context).primaryColor.withOpacity(enabled ? 1 : 0.5),
+          color: AppColors.purple.withOpacity(enabled ? 1 : 0.5),
           borderRadius: BorderRadius.circular(2.w),
         ),
         child: Text(
@@ -41,6 +48,44 @@ class _PrimayButton extends StatelessWidget {
             fontSize: 18.sp,
             fontWeight: FontWeight.w600,
             color: Theme.of(context).colorScheme.onPrimary,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _SmallPrimary extends StatelessWidget {
+  const _SmallPrimary({
+    required this.text,
+    required this.onPressed,
+    required this.enabled,
+  });
+
+  final String text;
+  final Function onPressed;
+  final bool enabled;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: enabled
+          ? () {
+              onPressed();
+            }
+          : null,
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 2.5.w),
+        decoration: BoxDecoration(
+          color: AppColors.purple.withOpacity(enabled ? 1 : 0.5),
+          borderRadius: BorderRadius.circular(2.w),
+        ),
+        child: Text(
+          text,
+          style: TextStyle(
+            color: AppColors.white,
+            fontWeight: FontWeight.w500,
+            fontSize: 16.sp,
           ),
         ),
       ),

@@ -3,6 +3,7 @@ import 'package:carys/core/presentation/widgets/app_buttons.dart';
 import 'package:carys/core/presentation/widgets/app_colors.dart';
 import 'package:carys/core/presentation/widgets/app_textstyle.dart';
 import 'package:carys/features/auth/data/models/country_codes.dart';
+import 'package:carys/features/auth/presentation/pages/create_account_page.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -114,7 +115,7 @@ class _MobileVerificationPageState extends State<MobileVerificationPage> {
   }
 
   void proceed() {
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => TabOverlayPage()));
+    Navigator.pushReplacement(context,
+        MaterialPageRoute(builder: (context) => const CreateAccountPage()));
   }
 }
