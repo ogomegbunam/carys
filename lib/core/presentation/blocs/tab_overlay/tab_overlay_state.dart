@@ -1,10 +1,21 @@
 part of 'tab_overlay_bloc.dart';
 
 class TabOverlayState extends Equatable {
-  final int tabIndex;
-  final bool showTabBar;
-  const TabOverlayState(this.tabIndex, this.showTabBar);
+  final PersistentTabController tabController;
+  const TabOverlayState(this.tabController);
+
+  void changeTabIndex(int index) {
+    tabController.index = index;
+  }
 
   @override
-  List<Object> get props => [tabIndex, showTabBar];
+  List<Object> get props => [tabController];
+}
+
+class TabOverlayShown extends TabOverlayState {
+  const TabOverlayShown(super.tabController);
+}
+
+class TabOverlayHidden extends TabOverlayState {
+  const TabOverlayHidden(super.tabController);
 }

@@ -1,19 +1,20 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
 part 'tab_overlay_event.dart';
 part 'tab_overlay_state.dart';
 
 class TabOverlayBloc extends Bloc<TabOverlayEvent, TabOverlayState> {
-  TabOverlayBloc() : super(const TabOverlayState(0, true)) {
+  TabOverlayBloc() : super(TabOverlayShown(PersistentTabController())) {
     on<ChangeTabIndexEvent>((event, emit) {
-      emit(TabOverlayState(event.tabIndex, state.showTabBar));
+      emit(state..changeTabIndex(event.tabIndex));
     });
     on<ShowNavTabEvent>((event, emit) {
-      emit(TabOverlayState(state.tabIndex, true));
+      emit(TabOverlayShown(state.tabController));
     });
     on<HideNavTabEvent>((event, emit) {
-      emit(TabOverlayState(state.tabIndex, false));
+      emit(TabOverlayHidden(state.tabController));
     });
   }
 }
