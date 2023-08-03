@@ -1,6 +1,7 @@
 import 'dart:async';
 
 
+import 'package:carys/core/presentation/pages/tab_overlay_page.dart';
 import 'package:carys/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -24,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.push(
           context,
           PageTransition(
-              type: PageTransitionType.leftToRightWithFade, child:const OnboardingPage() ));
+              type: PageTransitionType.leftToRightWithFade, child: TabOverlayPage() ));
     });
   }
 
