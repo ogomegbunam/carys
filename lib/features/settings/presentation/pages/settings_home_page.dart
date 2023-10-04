@@ -64,6 +64,13 @@ class SettingsHomePage extends StatelessWidget {
                 }),
             SizedBox(height: 4.h),
             SettingsListTile(
+                text: "Settings",
+                icon: "settings",
+                onPressed: () {
+                  securityAndPrivacy(context);
+                }),
+            SizedBox(height: 2.w),
+            SettingsListTile(
                 text: "Security & Privacy",
                 icon: "security_icon",
                 onPressed: () {

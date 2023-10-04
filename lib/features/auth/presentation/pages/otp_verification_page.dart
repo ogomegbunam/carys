@@ -1,8 +1,8 @@
 import 'package:carys/core/presentation/pages/confirmation_page.dart';
-import 'package:carys/core/presentation/pages/tab_overlay_page.dart';
 import 'package:carys/core/presentation/widgets/app_buttons.dart';
 import 'package:carys/core/presentation/widgets/app_colors.dart';
 import 'package:carys/core/presentation/widgets/app_textstyle.dart';
+import 'package:carys/features/home/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -111,7 +111,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
       Navigator.popUntil(context, (route) => route.isFirst);
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => TabOverlayPage(),
+          builder: (context) => const HomePage(),
         ),
       );
     });

@@ -1,12 +1,14 @@
-import 'package:carys/core/presentation/pages/tab_overlay_page.dart';
+import 'package:carys/core/presentation/blocs/tab_overlay/tab_overlay_bloc.dart';
 import 'package:carys/core/presentation/widgets/app_buttons.dart';
 import 'package:carys/core/presentation/widgets/app_colors.dart';
 import 'package:carys/core/presentation/widgets/app_textfields.dart';
 import 'package:carys/core/presentation/widgets/app_textstyle.dart';
 import 'package:carys/features/auth/presentation/pages/create_account_page.dart';
 import 'package:carys/features/auth/presentation/pages/reset_password_page.dart';
+import 'package:carys/features/home/presentation/pages/home_page.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class LoginPage extends StatefulWidget {
@@ -111,8 +113,9 @@ class _LoginPageState extends State<LoginPage> {
 
   void login() {
     Navigator.popUntil(context, (route) => route.isFirst);
+    context.read<TabOverlayBloc>().add(ShowNavTabEvent());
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => TabOverlayPage()));
+        context, MaterialPageRoute(builder: (context) => const HomePage()));
   }
 
   void forgetPassword() {

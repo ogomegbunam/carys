@@ -26,4 +26,9 @@ class AppTextstyle {
         fontWeight: FontWeight.w500,
         color: color,
       );
+  static TextStyle bodyMedium({Color color = AppColors.black}) => TextStyle(
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w500,
+        color: color,
+      );
 }

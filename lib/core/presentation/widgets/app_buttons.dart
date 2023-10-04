@@ -9,6 +9,12 @@ class AppButtons {
           bool enabled = true}) =>
       _PrimayButton(text: text, onPressed: onPressed, enabled: enabled);
 
+  static Widget secondary(
+          {required String text,
+          required Function onPressed,
+          bool enabled = true}) =>
+      _SecondaryButon(text: text, onPressed: onPressed, enabled: enabled);
+
   static Widget smallPrimary(
           {required String text,
           required Function onPressed,
@@ -48,6 +54,45 @@ class _PrimayButton extends StatelessWidget {
             fontSize: 18.sp,
             fontWeight: FontWeight.w600,
             color: Theme.of(context).colorScheme.onPrimary,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _SecondaryButon extends StatelessWidget {
+  const _SecondaryButon({
+    required this.text,
+    required this.onPressed,
+    this.enabled = true,
+  });
+  final String text;
+  final Function onPressed;
+  final bool enabled;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: enabled
+          ? () {
+              onPressed();
+            }
+          : null,
+      child: Container(
+        height: 14.w,
+        width: double.maxFinite,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: AppColors.gray,
+          borderRadius: BorderRadius.circular(2.w),
+        ),
+        child: Text(
+          text,
+          style: TextStyle(
+            fontSize: 18.sp,
+            fontWeight: FontWeight.w600,
+            color: AppColors.black,
           ),
         ),
       ),

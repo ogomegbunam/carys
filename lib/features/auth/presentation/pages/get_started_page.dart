@@ -1,8 +1,8 @@
-import 'package:carys/core/presentation/pages/tab_overlay_page.dart';
 import 'package:carys/core/presentation/widgets/app_buttons.dart';
 import 'package:carys/core/presentation/widgets/app_textstyle.dart';
 import 'package:carys/features/auth/presentation/pages/mobile_verification_page.dart';
 import 'package:carys/features/auth/presentation/widgets/get_started_selection_button.dart';
+import 'package:carys/features/home/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -76,7 +76,7 @@ class _GetStartedPageState extends State<GetStartedPage> {
   void facebookLogin() {
     // put implementation for facebook login
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => TabOverlayPage()));
+        context, MaterialPageRoute(builder: (context) => const HomePage()));
   }
 
   void continueWithMobile() {

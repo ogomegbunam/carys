@@ -58,13 +58,13 @@ class EditProfilePage extends StatelessWidget {
     return Container(
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: AppColors.gray,
+        color: AppColors.lightGray,
         borderRadius: BorderRadius.circular(4.w),
       ),
       child: Icon(
         Icons.camera_alt_outlined,
         color: AppColors.darkGray.withOpacity(0.3),
-        size: 20.w,
+        size: 10.w,
       ),
     );
   }

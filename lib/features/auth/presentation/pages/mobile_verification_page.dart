@@ -1,4 +1,3 @@
-import 'package:carys/core/presentation/pages/tab_overlay_page.dart';
 import 'package:carys/core/presentation/widgets/app_buttons.dart';
 import 'package:carys/core/presentation/widgets/app_colors.dart';
 import 'package:carys/core/presentation/widgets/app_textstyle.dart';
