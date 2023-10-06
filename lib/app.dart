@@ -4,7 +4,6 @@ import 'package:carys/core/presentation/blocs/theme_mode/theme_mode_bloc.dart';
 import 'package:carys/core/presentation/pages/tab_overlay_page.dart';
 import 'package:carys/core/presentation/theme/app_theme_data.dart';
 import 'package:carys/features/home/presentation/bloc/dates_bloc.dart';
-import 'package:carys/features/home/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -41,8 +40,7 @@ class MyApp extends StatelessWidget {
           builder: (context, widget) {
             return TabOverlayPage(child: widget!);
           },
-          // home: const OnboardingPage(),
-          home: const HomePage(),
+          home: const OnboardingPage(),
         );
       }),
     );

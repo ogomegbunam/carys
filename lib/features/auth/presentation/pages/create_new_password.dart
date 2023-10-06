@@ -63,6 +63,7 @@ class _CreateNewPasswordPageState extends State<CreateNewPasswordPage> {
             builder: (context) => ConfirmationPage(
                   title: "New password created",
                   subtitle: "Password has been changed sucessfully !",
+                  alignTop: false,
                   onPressed: () {
                     Navigator.pop(context);
                   },

@@ -2,16 +2,27 @@ import 'dart:math' as math;
 
 import 'package:carys/core/presentation/widgets/app_colors.dart';
 import 'package:carys/core/presentation/widgets/app_textstyle.dart';
+import 'package:carys/features/chat/presentation/pages/video_call_page.dart';
+import 'package:carys/features/chat/presentation/widgets/chat_bubble.dart';
+import 'package:carys/features/chat/presentation/widgets/chat_detail_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class ChatDetailPage extends StatelessWidget {
+class ChatDetailPage extends StatefulWidget {
   const ChatDetailPage({super.key});
 
   @override
+  State<ChatDetailPage> createState() => _ChatDetailPageState();
+}
+
+class _ChatDetailPageState extends State<ChatDetailPage> {
+  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
+      endDrawer: const ChatDetailDrawer(),
       backgroundColor: AppColors.background,
       body: Column(
         children: [
@@ -62,24 +73,122 @@ class ChatDetailPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(width: 2.w),
-                  SvgPicture.asset('assets/svg/photo_camera.svg'),
+                  GestureDetector(
+                    onTap: videoCall,
+                    child: Padding(
+                      padding: EdgeInsets.all(1.w),
+                      child: SvgPicture.asset('assets/svg/video_call.svg'),
+                    ),
+                  ),
                   SizedBox(width: 2.w),
-                  const Icon(Icons.menu),
+                  GestureDetector(
+                    onTap: openCloseDrawer,
+                    child: Padding(
+                      padding: EdgeInsets.all(1.w),
+                      child: const Icon(Icons.menu),
+                    ),
+                  ),
                   SizedBox(width: 2.w),
                 ],
               ),
             ),
           ),
-          Expanded(child: ListView.builder(itemBuilder: (context, index) {
-            if (index.isEven) {
-              return SentMessage(message: "hello");
-            } else {
-              return RecievedMessage(message: "hi");
-            }
-          }))
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 4.w),
+              child: SingleChildScrollView(
+                reverse: true,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    ChatBubble(
+                      message: "Hello",
+                      messageTime: DateTime.now(),
+                      isRead: true,
+                    ),
+                    ChatBubble(
+                      message: "Hello",
+                      rightAlign: false,
+                      messageTime: DateTime.now(),
+                    ),
+                    ChatBubble(
+                      message:
+                          "Some longer message that should definietly overflow this page",
+                      messageTime: DateTime.now(),
+                      isRead: true,
+                    ),
+                    ChatBubble(
+                      message:
+                          "Some longer message that should definietly overflow this page",
+                      messageTime: DateTime.now(),
+                      rightAlign: false,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Container(
+            height: 7.h,
+            margin: EdgeInsets.fromLTRB(4.w, 1.w, 4.w, 4.w),
+            padding: EdgeInsets.only(right: 2.w, left: 4.w),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(3.h),
+              color: AppColors.white,
+              border: Border.all(
+                color: AppColors.darkGray,
+                width: 0.8,
+              ),
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    style: AppTextstyle.bodySmall(),
+                    decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Your message here...'),
+                  ),
+                ),
+                _iconButton('assets/svg/attach_file.svg', () {}),
+                SizedBox(width: 2.w),
+                _iconButton('assets/svg/photo_camera.svg', () {}),
+                SizedBox(width: 2.w),
+              ],
+            ),
+          )
         ],
       ),
     );
+  }
+
+  GestureDetector _iconButton(String icon, Function function) {
+    return GestureDetector(
+      onTap: () {
+        function();
+      },
+      child: Padding(
+        padding: EdgeInsets.all(1.w),
+        child: SvgPicture.asset(icon),
+      ),
+    );
+  }
+
+  void videoCall() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const VideoCallPage(),
+      ),
+    );
+  }
+
+  void openCloseDrawer() {
+    if (scaffoldKey.currentState!.isEndDrawerOpen) {
+      scaffoldKey.currentState!.closeEndDrawer();
+    } else {
+      scaffoldKey.currentState!.openEndDrawer();
+    }
   }
 }
 

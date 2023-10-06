@@ -5,15 +5,18 @@ import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class ConfirmationPage extends StatelessWidget {
-  const ConfirmationPage(
-      {super.key,
-      required this.title,
-      required this.subtitle,
-      required this.onPressed});
+  const ConfirmationPage({
+    super.key,
+    required this.title,
+    required this.subtitle,
+    required this.onPressed,
+    this.alignTop = true,
+  });
 
   final String title;
   final String subtitle;
   final Function onPressed;
+  final bool alignTop;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +42,13 @@ class ConfirmationPage extends StatelessWidget {
                   const Spacer(flex: 6),
                 ],
               ),
-              const Spacer(),
+              SizedBox(height: 1.w),
+              if (alignTop)
+                Text(
+                  subtitle,
+                  style: AppTextstyle.bodySmall(),
+                ),
+              SizedBox(height: 20.h),
               Container(
                 height: 35.w,
                 width: 35.w,
@@ -55,18 +64,18 @@ class ConfirmationPage extends StatelessWidget {
                   color: AppColors.purple,
                 ),
               ),
-              const Spacer(),
-              Text(
-                subtitle,
-                style: AppTextstyle.bodySmall(),
-              ),
-              const Spacer(),
+              SizedBox(height: 10.h),
+              if (!alignTop)
+                Text(
+                  subtitle,
+                  style: AppTextstyle.bodySmall(),
+                ),
+              SizedBox(height: 10.h),
               AppButtons.primary(
                   text: "Continue",
                   onPressed: () {
                     onPressed();
                   }),
-              SizedBox(height: 6.h),
             ],
           ),
         ),
